@@ -1,3 +1,4 @@
+import 'package:app_two_fruity_ui/components/message_tile.dart';
 import 'package:app_two_fruity_ui/models/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -62,7 +63,43 @@ class _ShopPageState extends State<ShopPage> {
                 ),
 
                 // message
-                MessageTile()
+                MessageTile(),
+
+                // hot picks
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Hot Picks 🔥",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 24),
+                      ),
+                      Text(
+                        "See all",
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 133, 128, 171),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Expanded(
+                    child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        padding: EdgeInsets.only(bottom: 25),
+                        itemCount: value.getFruitList().length,
+                        itemBuilder: (context, index) {
+                          // get the individual fruit from shop
+                          Fruit indvidualFruit = value.getFruitList()[index];
+                          // create fruit tile with fruit
+                          return FruitTile
+                        }))
               ],
             ));
   }

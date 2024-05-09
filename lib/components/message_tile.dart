@@ -17,7 +17,7 @@ class MessageTile extends StatelessWidget {
         padding: EdgeInsets.all(25),
         child: Text(
           "everyone eats... some eat healthier than other",
-          style: TextStyle(color: Colors.grey[600,]),
+          style: TextStyle(color: Colors.grey[600]),
         ),
       ),
     );
