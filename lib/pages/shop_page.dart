@@ -3,6 +3,7 @@ import 'package:app_two_fruity_ui/models/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../components/fruit_tile.dart';
 import '../models/fruit.dart';
 
 class ShopPage extends StatefulWidget {
@@ -90,16 +91,31 @@ class _ShopPageState extends State<ShopPage> {
                   height: 10,
                 ),
                 Expanded(
-                    child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        padding: EdgeInsets.only(bottom: 25),
-                        itemCount: value.getFruitList().length,
-                        itemBuilder: (context, index) {
-                          // get the individual fruit from shop
-                          Fruit indvidualFruit = value.getFruitList()[index];
-                          // create fruit tile with fruit
-                          return FruitTile
-                        }))
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    padding: EdgeInsets.only(bottom: 25),
+                    itemCount: value.getFruitList().length,
+                    itemBuilder: (context, index) {
+                      // get the individual fruit from shop
+                      Fruit indvidualFruit = value.getFruitList()[index];
+                      // create fruit tile with fruit
+                      return FruitTile(
+                        imagePath: indvidualFruit.imagePath,
+                        fruitName: indvidualFruit.name,
+                        price: indvidualFruit.price,
+                        description: indvidualFruit.description,
+                        onTap: () => addFruitToCart(indvidualFruit),
+                      );
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Divider(
+                    color: Colors.white,
+                    thickness: 1,
+                  ),
+                )
               ],
             ));
   }
