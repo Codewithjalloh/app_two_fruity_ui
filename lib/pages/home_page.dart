@@ -53,7 +53,65 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: MyButtonNavBar(
         onTabChange: (index) => navigatedButtomBar(index),
       ),
-      drawer: Drawer(),
+      drawer: Drawer(
+        backgroundColor: Colors.grey[900],
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              children: [
+                // logo
+                DrawerHeader(
+                  child: Image.asset("images/logo.png"),
+                ),
+
+                // other pages
+                const Padding(
+                  padding: EdgeInsets.only(left: 25.0),
+                  child: ListTile(
+                    title: Text(
+                      "Home",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    leading: Icon(
+                      Icons.home,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+
+                const Padding(
+                  padding: EdgeInsets.only(left: 25.0),
+                  child: ListTile(
+                    title: Text(
+                      "About",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    leading: Icon(
+                      Icons.info,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const Padding(
+              padding: EdgeInsets.only(left: 25.0, bottom: 25.0),
+              child: ListTile(
+                title: Text(
+                  "Logout",
+                  style: TextStyle(color: Colors.white),
+                ),
+                leading: Icon(
+                  Icons.logout,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      body: _pages[_selectedIndex],
     );
   }
 }
